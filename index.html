@@ -12,16 +12,16 @@
   <style>
     :root{
       /* Paleta dark */
-      --bg:#fff7f7;      /* fundo principal preto */
+      --bg:#f0f9f1;      /* fundo principal preto */
       --card:#111318;    /* cartões */
-      --ink:#e5e7eb;     /* texto principal */
-      --muted:#9ca3af;   /* texto secundário */
-      --soft:#1a1f2a;    /* superfícies suaves */
-      --ring:#242a36;    /* bordas */
+      --ink:#d2dfd1;     /* texto principal */
+      --muted:#f4f6f9;   /* texto secundário */
+      --soft:#4f5053;    /* superfícies suaves */
+      --ring:#f0f3fa;    /* bordas */
       --accent:#00e5a8;  /* destaque eco/neon */
       --accent2:#f5c542; /* destaque premium/dourado */
       --danger:#ef4444;
-      --grad:linear-gradient(135deg,#00e5a8,#38bdf8,#7c3aed);
+      --grad:linear-gradient(135deg,#34ccd1,#326a89,#3aedab);
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;background:var(--bg);color:var(--ink)}
@@ -38,7 +38,7 @@
     .menu{display:flex;gap:18px;align-items:center}
     .menu a{padding:10px 12px;border-radius:12px;color:var(--ink);font-weight:600}
     .menu a:hover{background:#0f1720}
-    .cta{padding:10px 14px;border-radius:14px;background:var(--grad);color:#fff;font-weight:800;box-shadow:0 6px 16px #00000055}
+    .cta{padding:10px 14px;border-radius:14px;background:var(--grad);color:#0f0c0c;font-weight:800;box-shadow:0 6px 16px #00000055}
     .burger{display:none;border:1px solid var(--ring);padding:8px 10px;border-radius:12px;background:#0f1720;color:var(--ink)}
     @media (max-width:900px){.menu{display:none}.burger{display:block}}
 
@@ -64,7 +64,7 @@
 
     /* ===== SECTIONS ===== */
     section{padding:64px 0}
-    .section-title{font-size:clamp(1.8rem,2.6vw,2.2rem);margin:0 0 12px;color:#fff}
+    .section-title{font-size:clamp(1.8rem,2.6vw,2.2rem);margin:1 0 12px;color:#020202}
     .section-sub{color:var(--muted);margin-bottom:28px}
 
     /* Cards */
@@ -103,7 +103,7 @@
     @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} .form{grid-template-columns:1fr} }
 
     /* Footer */
-    footer{background:#050505;color:#cbd5e1;padding:36px 0}
+    footer{background:#050505;color:lab(100% 0.01 -0.01);padding:36px 0}
     footer a{color:#e2e8f0}
 
     /* Floating WhatsApp */
@@ -150,7 +150,7 @@
     <div class="grid">
       <div>
         <span class="badge">🚗 Lavar Car Delivery • Atendimento em domicílio</span>
-        <h1>Seu carro impecável <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">sem sair de casa</span></h1>
+        <h1> <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Seu carro impecável sem sair de casa</span></h1>
         <p class="lead">Horário flexível, produtos biodegradáveis e equipe qualificada. Agende pelo WhatsApp e receba o serviço onde estiver.</p>
         <div class="actions">
           <a class="btn primary" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20agendar%20o%20Lavar%20Car%20Delivery." target="_blank">Agendar no WhatsApp</a>
