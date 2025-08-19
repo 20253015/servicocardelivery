@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>[NOME DA EMPRESA] — Lavar Car Delivery</title>
+  <meta name="description" content="Lavar Car Delivery com atendimento em domicílio. Planos Eco e Premium, agendamento rápido pelo WhatsApp." />
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Paleta dark */
+      --bg:#0a0a0a;      /* fundo principal preto */
+      --card:#111318;    /* cartões */
+      --ink:#e5e7eb;     /* texto principal */
+      --muted:#9ca3af;   /* texto secundário */
+      --soft:#1a1f2a;    /* superfícies suaves */
+      --ring:#242a36;    /* bordas */
+      --accent:#00e5a8;  /* destaque eco/neon */
+      --accent2:#f5c542; /* destaque premium/dourado */
+      --danger:#ef4444;
+      --grad:linear-gradient(135deg,#00e5a8,#38bdf8,#7c3aed);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial;background:var(--bg);color:var(--ink)}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* ===== NAV ===== */
+    .nav{position:sticky;top:0;z-index:70;background:#0a0a0ae6;backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--ring)}
+    .nav .inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:16px;background:var(--grad);display:grid;place-items:center;color:#0b1220;font-weight:900;font-size:1.5rem;box-shadow:0 6px 18px #00000055}
+    .brand-title{font-weight:900;letter-spacing:.2px;font-size:1.8rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:10px 12px;border-radius:12px;color:var(--ink);font-weight:600}
+    .menu a:hover{background:#0f1720}
+    .cta{padding:10px 14px;border-radius:14px;background:var(--grad);color:#fff;font-weight:800;box-shadow:0 6px 16px #00000055}
+    .burger{display:none;border:1px solid var(--ring);padding:8px 10px;border-radius:12px;background:#0f1720;color:var(--ink)}
+    @media (max-width:900px){.menu{display:none}.burger{display:block}}
+
+    /* Drawer mobile */
+    .drawer{position:fixed;inset:0 0 0 auto;transform:translateX(100%);transition:transform .25s ease;width:86vw;max-width:380px;background:#0f1720;box-shadow:-8px 0 24px #00000066;z-index:80;display:flex;flex-direction:column;border-left:1px solid var(--ring)}
+    .drawer.open{transform:none}
+    .drawer .head{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid var(--ring);color:var(--ink)}
+    .drawer a{padding:16px 18px;border-bottom:1px solid var(--ring);color:var(--ink)}
+
+    /* ===== HERO ===== */
+    .hero{position:relative;padding:72px 0 36px}
+    .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:#0f1720;border:1px solid var(--ring);color:var(--ink);padding:6px 10px;border-radius:999px;font-weight:700;font-size:.92rem}
+    h1{font-size:clamp(2.2rem,3.4vw,3.2rem);line-height:1.08;margin:14px 0 10px}
+    .lead{font-size:1.05rem;color:var(--muted)}
+    .hero .actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn{padding:12px 16px;border-radius:14px;font-weight:800;border:1px solid transparent}
+    .btn.primary{background:var(--grad);color:#0b1220}
+    .btn.secondary{background:#0f1720;border-color:var(--ring);color:var(--ink)}
+    .hero .mock{border:1px solid var(--ring);border-radius:22px;overflow:hidden;box-shadow:0 28px 80px #00000066}
+
+    @media (max-width:900px){ .hero .grid{grid-template-columns:1fr} }
+
+    /* ===== SECTIONS ===== */
+    section{padding:64px 0}
+    .section-title{font-size:clamp(1.8rem,2.6vw,2.2rem);margin:0 0 12px;color:#fff}
+    .section-sub{color:var(--muted);margin-bottom:28px}
+
+    /* Cards */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--ring);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 6px 20px #00000055}
+    .chip{display:inline-flex;gap:6px;align-items:center;background:#0f1720;border:1px dashed var(--ring);border-radius:999px;padding:6px 10px;color:var(--ink);font-weight:700;width:max-content}
+    .muted{color:var(--muted)}
+    @media (max-width:900px){ .cards{grid-template-columns:1fr} }
+
+    /* Services */
+    .service-eco h3{color:var(--accent)}
+    .service-premium h3{color:var(--accent2)}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){.pricing{grid-template-columns:1fr}}
+    .plan{background:var(--card);border:1px solid var(--ring);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:0 6px 20px #00000055;transition:transform .2s;position:relative}
+    .plan.popular{border:2px solid var(--accent)}
+    .ribbon{position:absolute;top:14px;right:14px;background:var(--grad);color:#0b1220;font-size:.78rem;padding:6px 10px;border-radius:999px;font-weight:900}
+    .plan h3{color:#fff;margin:0}
+    .price{font-size:2rem;font-weight:900;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .per{color:var(--muted)}
+    .feat{display:flex;gap:10px;align-items:flex-start;color:var(--ink)}
+
+    /* Testimonials */
+    .carousel{position:relative}
+    .track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+    .testi{min-width:320px;scroll-snap-align:start;border:1px solid var(--ring);border-radius:18px;padding:18px;background:var(--card)}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .form input,.form textarea{width:100%;padding:12px 14px;border:1px solid var(--ring);border-radius:14px;background:#0f1720;color:var(--ink)}
+    .form textarea{grid-column:1/-1;min-height:120px}
+    .form button{grid-column:1/-1}
+    @media (max-width:900px){ .contact-grid{grid-template-columns:1fr} .form{grid-template-columns:1fr} }
+
+    /* Footer */
+    footer{background:#050505;color:#cbd5e1;padding:36px 0}
+    footer a{color:#e2e8f0}
+
+    /* Floating WhatsApp */
+    .float-whats{position:fixed;bottom:18px;right:18px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;font-weight:800;display:flex;gap:10px;align-items:center;box-shadow:0 12px 30px #00000055;z-index:90}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(10px);transition:all .5s ease}
+    .reveal.show{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="wrap inner">
+      <div class="brand">
+        <div class="logo">LC</div>
+        <span class="brand-title">[NOME DA EMPRESA]</span>
+      </div>
+      <div class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#planos">Planos</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#contato" class="cta">Contato</a>
+      </div>
+      <button class="burger" id="openMenu">☰</button>
+    </div>
+  </nav>
+
+  <!-- Drawer mobile -->
+  <aside class="drawer" id="drawer">
+    <div class="head"><strong>Menu</strong><button id="closeMenu">✕</button></div>
+    <a href="#inicio" onclick="toggleDrawer(false)">Início</a>
+    <a href="#sobre" onclick="toggleDrawer(false)">Sobre</a>
+    <a href="#servicos" onclick="toggleDrawer(false)">Serviços</a>
+    <a href="#planos" onclick="toggleDrawer(false)">Planos</a>
+    <a href="#depoimentos" onclick="toggleDrawer(false)">Depoimentos</a>
+    <a href="#contato" onclick="toggleDrawer(false)">Contato</a>
+  </aside>
+
+  <!-- ===== HERO ===== -->
+  <header id="inicio" class="hero wrap">
+    <div class="grid">
+      <div>
+        <span class="badge">🚗 Lavar Car Delivery • Atendimento em domicílio</span>
+        <h1>Seu carro impecável <span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">sem sair de casa</span></h1>
+        <p class="lead">Horário flexível, produtos biodegradáveis e equipe qualificada. Agende pelo WhatsApp e receba o serviço onde estiver.</p>
+        <div class="actions">
+          <a class="btn primary" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20agendar%20o%20Lavar%20Car%20Delivery." target="_blank">Agendar no WhatsApp</a>
+          <a class="btn secondary" href="#planos">Ver planos</a>
+        </div>
+      </div>
+      <div class="mock reveal">
+        <img src="https://images.unsplash.com/photo-1607079309532-7c647fd5826d?q=80&w=1600&auto=format&fit=crop" alt="Lavagem automotiva profissional"/>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="wrap reveal">
+    <h2 class="section-title">Sobre nós</h2>
+    <p class="section-sub">Missão, visão e valores que guiam nosso atendimento.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="chip">🎯 Missão</span>
+        <p class="muted">Levar praticidade e excelência em lavagem automotiva até você, com qualidade, segurança e pontualidade.</p>
+      </div>
+      <div class="card">
+        <span class="chip">🌱 Visão</span>
+        <p class="muted">Ser referência em Lavar Car Delivery na região, unindo sustentabilidade e alto padrão de acabamento.</p>
+      </div>
+      <div class="card">
+        <span class="chip">💎 Valores</span>
+        <p class="muted">Transparência, respeito ao cliente, responsabilidade ambiental e melhoria contínua.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVIÇOS ===== -->
+  <section id="servicos" class="wrap reveal">
+    <h2 class="section-title">Serviços</h2>
+    <p class="section-sub">Escolha entre os pacotes <strong>Eco</strong> e <strong>Premium</strong> conforme sua necessidade.</p>
+    <div class="cards">
+      <div class="card service-eco">
+        <span class="chip">🌿 Eco</span>
+        <h3>Lavagem consciente</h3>
+        <ul class="muted" style="margin:0;padding-left:18px;line-height:1.7">
+          <li>Lavagem externa com baixo consumo de água</li>
+          <li>Produtos biodegradáveis</li>
+          <li>Acabamento rápido e eficiente</li>
+          <li>Ideal para manutenções semanais</li>
+        </ul>
+      </div>
+      <div class="card service-premium">
+        <span class="chip">👑 Premium</span>
+        <h3>Cuidado completo</h3>
+        <ul class="muted" style="margin:0;padding-left:18px;line-height:1.7">
+          <li>Lavagem externa detalhada + enceramento</li>
+          <li>Higienização interna (painéis, aspiração e vidros)</li>
+          <li>Finalização com aroma e proteção UV</li>
+          <li>Perfeito para ocasiões especiais</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="chip">➕ Extras</span>
+        <h3>Serviços adicionais</h3>
+        <ul class="muted" style="margin:0;padding-left:18px;line-height:1.7">
+          <li>Hidratação de bancos (couro)</li>
+          <li>Revitalização de plásticos</li>
+          <li>Impermeabilização de estofados</li>
+          <li>Descontaminação de pintura</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANOS ===== -->
+  <section id="planos" class="wrap reveal">
+    <h2 class="section-title">Planos e Pacotes</h2>
+    <p class="section-sub">Escolha o plano ideal. Valores podem variar por porte do veículo.</p>
+
+    <div class="pricing">
+      <div class="plan">
+        <div class="ribbon">Básico</div>
+        <h3>Eco — Manutenção</h3>
+        <div>
+          <div class="price">R$ 49,90</div>
+          <div class="per">carros hatch/sedan</div>
+        </div>
+        <div class="feat">✅ <span>Lavagem externa rápida</span></div>
+        <div class="feat">✅ <span>Finalização com brilho</span></div>
+        <a class="btn primary" target="_blank" href="https://wa.me/55SEUNUMERO?text=Quero%20agendar%20o%20Plano%20B%C3%A1sico%20(Eco).">Agendar</a>
+      </div>
+
+      <div class="plan popular">
+        <div class="ribbon">Intermediário</div>
+        <h3>Eco — Completo</h3>
+        <div>
+          <div class="price">R$ 79,90</div>
+          <div class="per">inclui limpeza de rodas</div>
+        </div>
+        <div class="feat">✅ <span>Espuma ativa + secagem técnica</span></div>
+        <div class="feat">✅ <span>Aplicação de cera líquida</span></div>
+        <a class="btn primary" target="_blank" href="https://wa.me/55SEUNUMERO?text=Quero%20agendar%20o%20Plano%20Intermedi%C3%A1rio%20(Eco%20Completo).">Agendar</a>
+      </div>
+
+      <div class="plan">
+        <div class="ribbon">Avançado</div>
+        <h3>Premium — Detalhado</h3>
+        <div>
+          <div class="price">R$ 119,90</div>
+          <div class="per">externo + interno</div>
+        </div>
+        <div class="feat">✅ <span>Enceramento + higienização interna</span></div>
+        <div class="feat">✅ <span>Proteção e acabamento superior</span></div>
+        <a class="btn primary" target="_blank" href="https://wa.me/55SEUNUMERO?text=Quero%20agendar%20o%20Plano%20Avan%C3%A7ado%20(Premium).">Agendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section id="depoimentos" class="wrap reveal">
+    <h2 class="section-title">O que os clientes dizem</h2>
+    <p class="section-sub">Avaliações reais de quem já utiliza nosso Lavar Car Delivery.</p>
+    <div class="carousel">
+      <div class="track" id="track">
+        <article class="testi">
+          <strong>@carla.m</strong>
+          <p>“Chegaram no horário e fizeram tudo na minha garagem. Serviço excelente!”</p>
+        </article>
+        <article class="testi">
+          <strong>@oficina_do_joao</strong>
+          <p>“Ótimo para manter a frota sempre limpa. Profissionais e pontuais.”</p>
+        </article>
+        <article class="testi">
+          <strong>@gustavo.r</strong>
+          <p>“Premium vale cada centavo. Interior cheirando novo e pintura brilhando.”</p>
+        </article>
+        <article class="testi">
+          <strong>@fernanda.auto</strong>
+          <p>“Adorei a proposta Eco. Rápido, prático e consciente.”</p>
+        </article>
+        <article class="testi">
+          <strong>@leandro.l</strong>
+          <p>“Agendamento fácil pelo WhatsApp e equipe muito educada.”</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" class="wrap reveal">
+    <h2 class="section-title">Contato e Agendamento</h2>
+    <p class="section-sub">Preencha os dados ou fale direto no WhatsApp. Atendimento em <strong>[INSERIR CIDADE]</strong>.</p>
+    <div class="contact-grid">
+      <form class="form" onsubmit="event.preventDefault(); openWhats()">
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <input type="text" id="telefone" placeholder="Telefone/WhatsApp" required>
+        <input type="text" id="cidade" placeholder="Cidade/UF" value="[INSERIR CIDADE]">
+        <input type="text" id="veiculo" placeholder="Modelo do veículo">
+        <textarea id="mensagem" placeholder="Descreva o serviço (Eco/Premium) e possíveis extras"></textarea>
+        <button class="btn primary" type="submit">Enviar no WhatsApp</button>
+      </form>
+      <div>
+        <div class="card" style="height:100%">
+          <h3>Dados da empresa</h3>
+          <p class="muted"><strong>Nome:</strong> [NOME DA EMPRESA]</p>
+          <p class="muted"><strong>Endereço:</strong> [ENDEREÇO COMPLETO]</p>
+          <p class="muted"><strong>Telefone:</strong> [TELEFONE]</p>
+          <p class="muted"><strong>E-mail:</strong> [EMAIL@DOMINIO.COM]</p>
+          <p class="muted"><strong>CNPJ:</strong> [00.000.000/0000-00]</p>
+          <hr style="border:none;border-top:1px solid var(--ring);margin:10px 0">
+          <h3>Localização</h3>
+          <div style="aspect-ratio:16/9;border:1px solid var(--ring);border-radius:14px;overflow:hidden">
+            <iframe title="Mapa" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen
+              src="https://www.google.com/maps?q=[INSERIR+CIDADE]&output=embed"></iframe>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap">
+            <a class="btn secondary" target="_blank" href="https://wa.me/55SEUNUMERO">WhatsApp</a>
+            <a class="btn secondary" target="_blank" href="https://instagram.com/SEUINSTAGRAM">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div style="display:flex;gap:12px;align-items:center">
+        <div class="logo" style="width:40px;height:40px;font-size:1.1rem">LC</div>
+        <div>
+          <strong>[NOME DA EMPRESA]</strong><br>
+          <small>© <span id="year"></span> Todos os direitos reservados.</small>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#planos">Planos</a>
+        <a href="#contato">Contato</a>
+        <a href="https://instagram.com/SEUINSTAGRAM" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a class="float-whats" target="_blank" href="https://wa.me/55SEUNUMERO?text=Ol%C3%A1!%20Quero%20agendar%20o%20Lavar%20Car%20Delivery.">💬 Falar no WhatsApp</a>
+
+  <script>
+    // Mobile drawer
+    const drawer = document.getElementById('drawer');
+    const openMenu = document.getElementById('openMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    function toggleDrawer(force){
+      if(typeof force === 'boolean'){ drawer.classList.toggle('open', force); return; }
+      drawer.classList.toggle('open');
+    }
+    openMenu && openMenu.addEventListener('click',()=>toggleDrawer());
+    closeMenu && closeMenu.addEventListener('click',()=>toggleDrawer(false));
+
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting){entry.target.classList.add('show');} });
+    }, {threshold:.08});
+    revealEls.forEach(el=>io.observe(el));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // WhatsApp com dados do formulário
+    function openWhats(){
+      const nome = document.getElementById('nome').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const cidade = document.getElementById('cidade').value.trim();
+      const veiculo = document.getElementById('veiculo').value.trim();
+      const msg = document.getElementById('mensagem').value.trim();
+      const texto = `Ol%C3%A1!%20Sou%20${encodeURIComponent(nome)}.%20Tel:%20${encodeURIComponent(telefone)}.%20Cidade:%20${encodeURIComponent(cidade)}.%20Ve%C3%ADculo:%20${encodeURIComponent(veiculo)}.%20Servi%C3%A7o:%20${encodeURIComponent(msg)}`;
+      const link = `https://wa.me/55SEUNUMERO?text=${texto}`;
+      window.open(link,'_blank');
+    }
+
+    // Carrossel suave depoimentos
+    const track = document.getElementById('track');
+    let scrollDir = 1; let autoScroll;
+    function startAuto(){ stopAuto(); autoScroll = setInterval(()=>{
+        if(!track) return; track.scrollLeft += 1 * scrollDir;
+        if(track.scrollLeft + track.clientWidth >= track.scrollWidth - 2) scrollDir = -1;
+        if(track.scrollLeft <= 2) scrollDir = 1; }, 16); }
+    function stopAuto(){ if(autoScroll) clearInterval(autoScroll); }
+    if(track){ startAuto(); track.addEventListener('mouseenter', stopAuto); track.addEventListener('mouseleave', startAuto); }
+  </script>
+</body>
+</html>
